@@ -1,14 +1,19 @@
+var noteData = require("../db/db.json");
+const routes = require('express').Router();
 
 
-module.exports = function(app) {
    
 // api routes
-app.get("/api/notes", (req, res) => {
-    res.json(note);
+routes.get("/api/notes", (req, res) => { console.log("/api/notes "+ JSON.stringify(noteData));
+    res.json(noteData);
 });
         
-app.post("/api/notes", (req, res) => {
-    dbData.push(req.body);
-    res.json(note);
+routes.post("/api/notes", (req, res) => { console.log("post /api/notes");
+    noteData.push(req.body);
+    res.json(noteData);
 });
-}
+
+routes.delete('/api/notes/:id', (req, res) => { 
+    res.send(noteData);
+});
+module.exports = routes;
