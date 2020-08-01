@@ -1,15 +1,16 @@
 // dependencies
 var path = require("path");
+const routes = require('express').Router();
 
-module.exports = function(app) {
+
 //html routes
-app.get("/notes", (req, res) => {
+routes.get("/notes", (req, res) => { console.log("/notes");
     res.sendFile(path.join(__dirname, "./html/notes.html"));
 });
 
-app.get("*", (req, res) => {
+routes.get("/", (req, res) => { console.log("*");
     res.sendFile(path.join(__dirname, "./html/index.html"));
 });
 
 
-};
+module.exports = routes;
